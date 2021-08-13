@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "eastus"
+            "value": "eastasia"
         },
         "networkInterfaceName": {
             "value": "homepage225"
@@ -65,7 +65,7 @@
             "value": "homepage"
         },
         "virtualMachineRG": {
-            "value": "appgateway"
+            "value": "g1"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -77,7 +77,7 @@
             "value": "sairavula"
         },
         "adminPassword": {
-            "value": null
+            "value": "samkal@12345"
         },
         "patchMode": {
             "value": "AutomaticByOS"
