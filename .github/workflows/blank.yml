@@ -23,10 +23,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      
+      - name: Checking files
+        run: |
+          ls ${{ github.workspace }}
       - name: Checkout Another Repository
         run: |
+          mkdir test
+          cd test
           git clone https://github.com/sairavul/fristrepo.git
+          ls ${{ github.workspace }}/test
+          sed -i.bak 's/bolerplatename/${{parameters.MICROSERVICE_NAME}}/g' ${{ github.workspace }}/test/workflow.yaml
+          mv ${{ github.workspace }}
+          cd ${{ github.workspace }}
+          git add .
+          git commit -m "worgflow created"
+          git push origin master
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
