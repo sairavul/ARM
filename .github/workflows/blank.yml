@@ -8,9 +8,8 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'pipeline name or repo name'
+        description: 'Log level or pipeline name'
         required: true
-        default: 'parameters.MICROSERVICE_NAME'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,7 +31,7 @@ jobs:
           cd test
           git clone https://github.com/sairavul/fristrepo.git
           ls ${{ github.workspace }}/test
-          sed -i.bak 's/bolerplatename/${{parameters.MICROSERVICE_NAME}}/g' ${{ github.workspace }}/test/workflow.yaml
+          sed -i.bak 's/bolerplatename/${{ github.event.inputs.logLevel }}/g' ${{ github.workspace }}/test/workflow.yaml
           mv ${{ github.workspace }}
           cd ${{ github.workspace }}
           git add .
