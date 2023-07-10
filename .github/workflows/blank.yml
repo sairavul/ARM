@@ -25,13 +25,7 @@ jobs:
       - name: Checking files
         run: |
           ls ${{ github.workspace }}
-      - name: Set up environment variables
-        run: |
-          echo "Setting up environment variables"
-          echo "GH_TOKEN=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" >> $GITHUB_ENV
       - name: Checkout Another Repository
-        env:
-          GITHUB_TOKEN: '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'
         run: |
           cd test
           git clone https://github.com/sairavul/fristrepo.git
@@ -48,16 +42,10 @@ jobs:
           git commit -m "workflow created" --no-verify
           git remote -v 
           git push origin
-          cd ${{ github.workspace }}/.github/workflows/
-          gh auth login --with-token ${{ secrets.MY_PAT }}
-          gh workflow run workflow.yaml
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: creating workflow
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd ${{ github.workspace }}/.github/workflows/
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          gh worlflow run ./workflow.yaml
+
+        
