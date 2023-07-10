@@ -25,6 +25,10 @@ jobs:
       - name: Checking files
         run: |
           ls ${{ github.workspace }}
+      - name: Set up environment variables
+        run: |
+          echo "Setting up environment variables"
+          echo "GH_TOKEN=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" >> $GITHUB_ENV
       - name: Checkout Another Repository
         run: |
           cd test
