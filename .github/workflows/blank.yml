@@ -36,13 +36,14 @@ jobs:
           (Get-Content -Path $filePath) | ForEach-Object {
               $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
           } | Set-Content -Path $filePath -Encoding UTF8
-          mv fristrepo\workflow.yaml ${{ github.workspace }}
+          mv fristrepo\workflow.yaml ${{ github.workspace }}/.github/workflows/
           git rm --cached test/fristrepo
           cd ${{ github.workspace }}
           git add .
           git commit -m "workflow created" --no-verify
           git remote -v 
           git push origin
+          gh workflow run --path .github/workflows/workflow.yaml --ref main
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
