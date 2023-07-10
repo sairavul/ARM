@@ -49,7 +49,7 @@ jobs:
           git remote -v 
           git push origin
           cd ${{ github.workspace }}/.github/workflows/
-          gh auth login
+          gh auth login --with-token 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
           gh workflow run workflow.yaml
 
       # Runs a single command using the runners shell
