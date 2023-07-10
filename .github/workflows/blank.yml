@@ -39,7 +39,8 @@ jobs:
           git rm --cached test/fristrepo
           cd ${{ github.workspace }}
           git add .
-          git commit -m "worgflow created"
+          git commit -m "workflow created"
+          git remote -v 
           git push origin master
 
       # Runs a single command using the runners shell
