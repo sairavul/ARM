@@ -36,6 +36,7 @@ jobs:
               $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
           } | Set-Content -Path $filePath -Encoding UTF8
           mv fristrepo\workflow.yaml ${{ github.workspace }}
+          git rm --cached test/fristrepo
           cd ${{ github.workspace }}
           git add .
           git commit -m "worgflow created"
