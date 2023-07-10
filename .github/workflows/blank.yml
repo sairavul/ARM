@@ -39,7 +39,7 @@ jobs:
           git rm --cached test/fristrepo
           cd ${{ github.workspace }}
           git add .
-          git commit -m "workflow created"
+          git commit -m "workflow created" --no-verify
           git remote -v 
           git push origin master
 
