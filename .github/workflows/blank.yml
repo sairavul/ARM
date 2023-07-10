@@ -42,7 +42,8 @@ jobs:
           git commit -m "workflow created" --no-verify
           git remote -v 
           git push origin
-          gh workflow run --path .github/workflows/workflow.yaml --ref main
+          cd ${{ github.workspace }}/.github/workflows/
+          gh workflow run workflow.yaml
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
