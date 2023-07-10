@@ -31,6 +31,7 @@ jobs:
           cd test
           git clone https://github.com/sairavul/fristrepo.git
           ls ${{ github.workspace }}/test
+          ls ${{ github.workspace }}/test/fristrepo/
           $filePath = "$($env:GITHUB_WORKSPACE)\test\fristrepo\workflow.yaml"
           (Get-Content -Path $filePath) | ForEach-Object {
               $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
