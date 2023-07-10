@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir test
           cd test
-          git clone https://github.com/sairavul/fristrepo.git
+          git submodule add https://github.com/sairavul/fristrepo.git test/fristrepo
           ls ${{ github.workspace }}/test
           $filePath = "$($env:GITHUB_WORKSPACE)\test\fristrepo\workflow.yaml"
           (Get-Content -Path $filePath) | ForEach-Object {
@@ -41,7 +41,7 @@ jobs:
           git add .
           git commit -m "workflow created" --no-verify
           git remote -v 
-          git push origin master
+          git push origin
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
