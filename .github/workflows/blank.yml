@@ -31,7 +31,10 @@ jobs:
           cd test
           git clone https://github.com/sairavul/fristrepo.git
           ls ${{ github.workspace }}/test
-          sed -i.bak 's/bolerplatename/${{ github.event.inputs.logLevel }}/g' ${{ github.workspace }}/test/workflow.yaml
+          $filePath = "$($env:GITHUB_WORKSPACE)\test\workflow.yaml"
+          (Get-Content -Path $filePath) | ForEach-Object {
+              $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
+          } | Set-Content -Path $filePath -Encoding UTF8
           mv ${{ github.workspace }}
           cd ${{ github.workspace }}
           git add .
