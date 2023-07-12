@@ -42,10 +42,12 @@ jobs:
           chmod +x 777
           git rm --cached test/fristrepo
           cd ${{ github.workspace }}
+          git config --global "sairavul"
+          git config --global user.email "sairavulas2@gmail.com"
           git add .
           git commit -m "workflow created" --no-verify
           git remote -v 
-          git push origin
+          git push origin HEAD
       - name: creating workflow
         run: |
           cd ${{ github.workspace }}/.github/workflows/
