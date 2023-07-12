@@ -27,7 +27,7 @@ jobs:
           ls ${{ github.workspace }}
       - name: Checkout Another Repository
       - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MYPAT }}
         run: |
           cd test
           git clone https://github.com/sairavul/fristrepo.git
