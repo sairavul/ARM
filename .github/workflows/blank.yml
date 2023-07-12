@@ -38,7 +38,7 @@ jobs:
               $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
           } | Set-Content -Path $filePath -Encoding UTF8
           mv fristrepo\workflow.yaml ${{ github.workspace }}/.github/workflows/
-          git rm --cached test/fristrepo
+          git rm --cached fristrepo
 
       - name: workflow test
         env:
