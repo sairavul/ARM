@@ -38,8 +38,6 @@ jobs:
               $_ -replace 'bolerplatename', $env:INPUT_LOGLEVEL
           } | Set-Content -Path $filePath -Encoding UTF8
           mv fristrepo\workflow.yaml ${{ github.workspace }}/.github/workflows/
-          ls -lart
-          chmod +x 777
           git rm --cached test/fristrepo
           cd ${{ github.workspace }}
           git config --global "sairavul"
