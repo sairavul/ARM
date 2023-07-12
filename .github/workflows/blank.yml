@@ -39,6 +39,11 @@ jobs:
           } | Set-Content -Path $filePath -Encoding UTF8
           mv fristrepo\workflow.yaml ${{ github.workspace }}/.github/workflows/
           git rm --cached test/fristrepo
+
+      - name: workflow test
+        env:
+          GITHUB_TOKEN: ${{ secrets.SAIPAT }}
+        run: |
           cd ${{ github.workspace }}
           git config --global "sairavul"
           git config --global user.email "sairavulas2@gmail.com"
